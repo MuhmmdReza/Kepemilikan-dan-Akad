@@ -125,21 +125,40 @@ button:hover{background:#0284c7}
   <div class="quiz">
     <h2 class="rainbow">Kuis Pemahaman</h2>
 
-    <p><b>1. Tema utama video?</b></p>
-    <input type="radio" name="q1" value="1"> Kepemilikan dan akad<br>
-    <input type="radio" name="q1" value="0"> Anak rajin belajar<br><br>
+    <div class="quiz">
+  <h2 class="rainbow">Kuis Pemahaman</h2>
 
-    <p><b>2. Sikap buruk tokoh utama?</b></p>
-    <input type="radio" name="q2" value="1"> Durhaka kepada orang tua<br>
-    <input type="radio" name="q2" value="0"> Rendah hati<br><br>
+  <p><b>1. Yang dimaksud dengan kepemilikan (al-milk) adalah …</b></p>
+  <input type="radio" name="q1" value="0"> Hak memakai barang orang lain<br>
+  <input type="radio" name="q1" value="1"> Kekuasaan penuh atas harta sesuai syariat<br>
+  <input type="radio" name="q1" value="0"> Hak meminjam barang<br>
+  <input type="radio" name="q1" value="0"> Hak menyimpan barang<br><br>
 
-    <p><b>3. Akibat dari sikap tersebut?</b></p>
-    <input type="radio" name="q3" value="1"> Mendapat balasan buruk<br>
-    <input type="radio" name="q3" value="0"> Hidup bahagia<br><br>
+  <p><b>2. Berikut ini yang termasuk macam kepemilikan dalam Islam, kecuali …</b></p>
+  <input type="radio" name="q2" value="0"> Kepemilikan pribadi<br>
+  <input type="radio" name="q2" value="0"> Kepemilikan umum<br>
+  <input type="radio" name="q2" value="0"> Kepemilikan negara<br>
+  <input type="radio" name="q2" value="1"> Kepemilikan sementara tanpa izin<br><br>
 
-    <p><b>4. Pesan moral cerita?</b></p>
-    <input type="radio" name="q4" value="1"> Hormati orang tua<br>
-    <input type="radio" name="q4" value="0"> Boleh sombong<br><br>
+  <p><b>3. Salah satu cara memperoleh kepemilikan yang sah menurut Islam adalah …</b></p>
+  <input type="radio" name="q3" value="0"> Menipu dalam jual beli<br>
+  <input type="radio" name="q3" value="0"> Mengambil tanpa izin<br>
+  <input type="radio" name="q3" value="1"> Warisan<br>
+  <input type="radio" name="q3" value="0"> Riba<br><br>
+
+  <p><b>4. Kepemilikan hak guna/manfaat berarti …</b></p>
+  <input type="radio" name="q4" value="0"> Memiliki barang secara penuh<br>
+  <input type="radio" name="q4" value="0"> Berhak menjual barang<br>
+  <input type="radio" name="q4" value="1"> Berhak memakai tanpa memiliki barang<br>
+  <input type="radio" name="q4" value="0"> Berhak mewariskan barang<br><br>
+
+  <div style="text-align:center">
+    <button onclick="cek()">Kirim</button>
+    <button onclick="ulang()">Ulang</button>
+    <button onclick="kembali()">⬅️ Kembali</button>
+    <p id="hasil"></p>
+  </div>
+    </div>
 
     <div style="text-align:center">
       <button onclick="cek()">Kirim</button>
