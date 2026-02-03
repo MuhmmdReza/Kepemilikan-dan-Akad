@@ -7,20 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+/* BODY & BACKGROUND */
 body{
   margin:0;
   padding:20px;
   font-family:Poppins,sans-serif;
   background-image:url("bg.jpg");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
   color:#fff;
   text-align:center;
   overflow-x:hidden;
 }
-  body::before{
+
+body::before{
   content:"";
   position:fixed;
   top:0;
@@ -29,12 +31,16 @@ background-attachment:fixed;
   height:100%;
   background:rgba(0,0,0,0.5);
   z-index:-1;
-  }
-  .screen video{
+}
+
+/* VIDEO */
+.screen video{
   width:100%;
   height:100%;
   border-radius:10px;
-  }
+}
+
+/* LOVE ANIMATION */
 .love{
   position:fixed;
   font-size:24px;
@@ -47,15 +53,8 @@ background-attachment:fixed;
   0%{transform:translateY(110vh)}
   100%{transform:translateY(-20vh) translateX(100px)}
 }
-  .benar{
-  background:rgba(0,255,0,0.25);
-  border-radius:8px;
-  padding:5px;
-}
-.salah{
-  background:rgba(255,0,0,0.25);
-  border-radius:8px;
-  padding:5px;
+
+/* TEXT */
 .rainbow{
   font-weight:700;
   background:linear-gradient(90deg,#ff0050,#00f2ea,#ffffff,#ff0050);
@@ -68,8 +67,12 @@ background-attachment:fixed;
   0%{background-position:0%}
   100%{background-position:300%}
 }
+
+/* SECTION */
 .section{display:none}
 .section.active{display:block}
+
+/* MONITOR */
 .monitor-wrap{
   display:flex;
   flex-direction:column;
@@ -95,7 +98,8 @@ background-attachment:fixed;
   overflow:hidden;
   background:#000;
 }
-.screen iframe{width:100%;height:100%;border:none}
+
+/* QUIZ */
 .quiz{
   background:rgba(15,23,42,.9);
   max-width:720px;
@@ -104,6 +108,8 @@ background-attachment:fixed;
   border-radius:14px;
   text-align:left;
 }
+
+/* BUTTON */
 button{
   background:#0f172a;
   color:#fff;
@@ -114,18 +120,34 @@ button{
   cursor:pointer;
 }
 button:hover{background:#0284c7}
+
+/* ✅ EFEK KUIS */
+.benar{
+  background: rgba(0,255,0,0.25);
+  border-radius: 8px;
+  padding: 5px;
+}
+.salah{
+  background: rgba(255,0,0,0.25);
+  border-radius: 8px;
+  padding: 5px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- SOUND -->
-<audio id="soundBenar" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"></audio>
-<audio id="soundSalah" src="https://assets.mixkit.co/active_storage/sfx/950/950-preview.mp3"></audio>
+<!-- LOVE BACKGROUND -->
+<span class="love" style="left:10%;animation-delay:0s">❤️</span>
+<span class="love" style="left:30%;animation-delay:3s">❤️</span>
+<span class="love" style="left:50%;animation-delay:6s">❤️</span>
+<span class="love" style="left:70%;animation-delay:9s">❤️</span>
+<span class="love" style="left:90%;animation-delay:12s">❤️</span>
 
-<h1 class="rainbow">MEDIA PEMBELAJARAN PAI FIQIH</h1>
-<h3 class="rainbow">HUKUM KEPEMILIKAN DAN AKAD DALAM ISLAM</h3>
+<h1 class="rainbow">MEDIA PEMBELAJARAN FIQIH</h1>
+<h3 class="rainbow">HUKUM KEPEMILIKAN DAN AKAD</h3>
 
+<!-- VIDEO PAGE -->
 <div id="videoPage" class="section active">
   <div class="monitor-wrap">
     <div class="computer">
@@ -134,19 +156,20 @@ button:hover{background:#0284c7}
         <span class="yellow"></span>
         <span class="green"></span>
       </div>
+
       <div class="screen">
-        <video id="videoPembelajaran" controls>
-  <source src="vidio.mp4" type="video/mp4">
-  Browser kamu tidak mendukung video.
+        <video id="videoPlayer" controls>
+          <source src="vidio.mp4" type="video/mp4">
         </video>
       </div>
     </div>
   </div>
-  <p class="rainbow">Video pembelajaran tentang Kepemilikan dan Akad.</p>
+
+  <p class="rainbow">VIDIO PEMBELJARAN TENTANG HUKUM KEPEMILIKAN DAN AKAD DALAM ISLAM.</p>
   <button onclick="keKuis()">➡️ Lanjut ke Kuis</button>
 </div>
 
-<!-- KUIS -->
+<!-- QUIZ PAGE -->
 <div id="quizPage" class="section">
   <div class="quiz">
     <h2 class="rainbow">Kuis Pemahaman</h2>
@@ -192,7 +215,21 @@ button:hover{background:#0284c7}
   </div>
 </div>
 
+<p class="rainbow"><b>Dibuat oleh: M. Reza Fahlevi</b></p>
+
 <script>
+const videoPlayer = document.getElementById("videoPlayer");
+
+function keKuis(){
+  videoPlayer.pause(); // otomatis pause video
+  document.getElementById("videoPage").classList.remove("active");
+  document.getElementById("quizPage").classList.add("active");
+}
+function kembali(){
+  document.getElementById("quizPage").classList.remove("active");
+  document.getElementById("videoPage").classList.add("active");
+}
+
 function cek(){
   let skor = 0;
 
@@ -223,41 +260,6 @@ function ulang(){
   document.getElementById("hasil").innerHTML="";
 }
 </script>
-}
-</script>
-function keKuis(){
-  const vid = document.getElementById("videoPembelajaran");
-  vid.pause(); // VIDEO BERHENTI
-  videoPage.classList.remove("active");
-  quizPage.classList.add("active");
-}
 
-function kembali(){
-  quizPage.classList.remove("active");
-  videoPage.classList.add("active");
-}
-
-function cek(){
-  let benar = 0;
-  let total = 4;
-
-  for(let i = 1; i <= total; i++){
-    let jawab = document.querySelector(`input[name="q${i}"]:checked`);
-    if(jawab && jawab.value === "1"){
-      benar++;
-    }
-  }
-
-  let status = benar >= 3 ? "✅ LULUS" : "❌ TIDAK LULUS";
-
-  hasil.innerHTML = `
-    <b>Skor kamu: ${benar} / ${total}</b><br>
-    <b>Status: ${status}</b>
-  `;
-}
-
-function ulang(){
-  document.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
-  hasil.innerHTML = "";
-}
-</script>
+</body>
+</html>
