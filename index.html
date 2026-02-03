@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Media Pembelajaran PAI FIQIH</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(135deg,#1fa2a6,#2bc0e4,#3ddc97);
+  color:#fff;
+  text-align:center;
+  overflow-x:hidden;
+}
+.love{
+  position:fixed;
+  font-size:24px;
+  opacity:0.7;
+  animation:loveFly 14s linear infinite;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes loveFly{
+  0%{transform:translateY(110vh)}
+  100%{transform:translateY(-20vh) translateX(100px)}
+}
+.rainbow{
+  font-weight:700;
+  background:linear-gradient(90deg,#ff0050,#00f2ea,#ffffff,#ff0050);
+  background-size:300%;
+  animation:warna 4s linear infinite;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+@keyframes warna{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+.section{display:none}
+.section.active{display:block}
+.monitor-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:30px 0;
+}
+.computer{
+  background:#0f172a;
+  padding:14px;
+  border-radius:16px;
+  width:90%;
+  max-width:900px;
+}
+.top{display:flex;gap:8px;margin-bottom:10px}
+.top span{width:12px;height:12px;border-radius:50%}
+.red{background:#ff5f56}
+.yellow{background:#ffbd2e}
+.green{background:#27c93f}
+.screen{
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:10px;
+  overflow:hidden;
+  background:#000;
+}
+.screen iframe{width:100%;height:100%;border:none}
+.quiz{
+  background:rgba(15,23,42,.9);
+  max-width:720px;
+  margin:30px auto;
+  padding:20px;
+  border-radius:14px;
+  text-align:left;
+}
+button{
+  background:#0f172a;
+  color:#fff;
+  border:1px solid #38bdf8;
+  padding:10px 18px;
+  border-radius:10px;
+  margin:6px;
+  cursor:pointer;
+}
+button:hover{background:#0284c7}
+</style>
+</head>
+
+<body>
+
+<!-- SOUND -->
+<audio id="soundBenar" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"></audio>
+<audio id="soundSalah" src="https://assets.mixkit.co/active_storage/sfx/950/950-preview.mp3"></audio>
+
+<span class="love" style="left:10%">❤️</span>
+<span class="love" style="left:30%">❤️</span>
+<span class="love" style="left:50%">❤️</span>
+<span class="love" style="left:70%">❤️</span>
+<span class="love" style="left:90%">❤️</span>
+
+<h1 class="rainbow">MEDIA PEMBELAJARAN PAI</h1>
+<h3 class="rainbow">KEPEMILIKAN DAN AKAD</h3>
+
+<div id="videoPage" class="section active">
+  <div class="monitor-wrap">
+    <div class="computer">
+      <div class="top">
+        <span class="red"></span>
+        <span class="yellow"></span>
+        <span class="green"></span>
+      </div>
+      <div class="screen">
+        <iframe src="https://www.youtube.com/embed/IQjXVSz86xw"></iframe>
+      </div>
+    </div>
+  </div>
+  <p class="rainbow">Video pembelajaran tentang Kepemilikan dan Akad.</p>
+  <button onclick="keKuis()">➡️ Lanjut ke Kuis</button>
+</div>
+
+<div id="quizPage" class="section">
+  <div class="quiz">
+    <h2 class="rainbow">Kuis Pemahaman</h2>
+
+    <p><b>1. Tema utama video?</b></p>
+    <input type="radio" name="q1" value="1"> Kepemilikan dan akad<br>
+    <input type="radio" name="q1" value="0"> Anak rajin belajar<br><br>
+
+    <p><b>2. Sikap buruk tokoh utama?</b></p>
+    <input type="radio" name="q2" value="1"> Durhaka kepada orang tua<br>
+    <input type="radio" name="q2" value="0"> Rendah hati<br><br>
+
+    <p><b>3. Akibat dari sikap tersebut?</b></p>
+    <input type="radio" name="q3" value="1"> Mendapat balasan buruk<br>
+    <input type="radio" name="q3" value="0"> Hidup bahagia<br><br>
+
+    <p><b>4. Pesan moral cerita?</b></p>
+    <input type="radio" name="q4" value="1"> Hormati orang tua<br>
+    <input type="radio" name="q4" value="0"> Boleh sombong<br><br>
+
+    <div style="text-align:center">
+      <button onclick="cek()">Kirim</button>
+      <button onclick="ulang()">Ulang</button>
+      <button onclick="kembali()">⬅️ Kembali</button>
+      <p id="hasil"></p>
+    </div>
+  </div>
+</div>
+
+<p class="rainbow"><b>Dibuat oleh: M. Reza Fahlevi</b></p>
+
+<script>
+function keKuis(){
+  videoPage.classList.remove("active");
+  quizPage.classList.add("active");
+}
+function kembali(){
+  quizPage.classList.remove("active");
+  videoPage.classList.add("active");
+}
+function cek(){
+  let benar = 0;
+  let salah = 0;
+  document.querySelectorAll("input:checked").forEach(i=>{
+    if(i.value=="1") benar++;
+    else salah++;
+  });
+
+  if(salah==0 && benar>0){
+    soundBenar.play();
+  }else{
+    soundSalah.play();
+  }
+
+  hasil.innerHTML="<b>Skor kamu: "+benar+"/4</b>";
+}
+function ulang(){
+  document.querySelectorAll("input").forEach(i=>i.checked=false);
+  hasil.innerHTML="";
+}
+</script>
+
+</body>
+</html>
