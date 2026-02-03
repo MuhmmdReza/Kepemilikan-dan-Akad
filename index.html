@@ -148,7 +148,6 @@ button:hover{background:#0284c7}
 
 <!-- KUIS -->
 <div id="quizPage" class="section">
-<div id="quizPage" class="section">
   <div class="quiz">
     <h2 class="rainbow">Kuis Pemahaman</h2>
 
@@ -184,54 +183,6 @@ button:hover{background:#0284c7}
       <input type="radio" name="q4" value="0"> D. Berhak mewariskan barang<br>
     </div>
 
-    <div id="soal5">
-      <p><b>5. Yang dimaksud dengan akad adalah …</b></p>
-      <input type="radio" name="q5" value="0"> A. Janji sepihak<br>
-      <input type="radio" name="q5" value="1"> B. Kesepakatan dua pihak yang menimbulkan akibat hukum<br>
-      <input type="radio" name="q5" value="0"> C. Perbuatan tanpa persetujuan<br>
-      <input type="radio" name="q5" value="0"> D. Kepemilikan harta<br>
-    </div>
-
-    <div id="soal6">
-      <p><b>6. Berikut ini yang bukan termasuk rukun akad adalah …</b></p>
-      <input type="radio" name="q6" value="0"> A. Pihak yang berakad<br>
-      <input type="radio" name="q6" value="0"> B. Objek akad<br>
-      <input type="radio" name="q6" value="0"> C. Ijab dan kabul<br>
-      <input type="radio" name="q6" value="1"> D. Keuntungan besar<br>
-    </div>
-
-    <div id="soal7">
-      <p><b>7. Akad dinyatakan sah apabila …</b></p>
-      <input type="radio" name="q7" value="0"> A. Dilakukan secara rahasia<br>
-      <input type="radio" name="q7" value="0"> B. Mengandung unsur paksaan<br>
-      <input type="radio" name="q7" value="1"> C. Memenuhi rukun dan syarat<br>
-      <input type="radio" name="q7" value="0"> D. Menguntungkan satu pihak saja<br>
-    </div>
-
-    <div id="soal8">
-      <p><b>8. Akad yang dilakukan tanpa kerelaan salah satu pihak hukumnya …</b></p>
-      <input type="radio" name="q8" value="0"> A. Sah<br>
-      <input type="radio" name="q8" value="0"> B. Wajib<br>
-      <input type="radio" name="q8" value="1"> C. Tidak sah<br>
-      <input type="radio" name="q8" value="0"> D. Sunnah<br>
-    </div>
-
-    <div id="soal9">
-      <p><b>9. Mengapa kepemilikan penting dalam akad jual beli?</b></p>
-      <input type="radio" name="q9" value="0"> A. Agar harga bisa mahal<br>
-      <input type="radio" name="q9" value="0"> B. Agar barang cepat laku<br>
-      <input type="radio" name="q9" value="1"> C. Agar penjual berhak menjual barang tersebut<br>
-      <input type="radio" name="q9" value="0"> D. Agar pembeli rugi<br>
-    </div>
-
-    <div id="soal10">
-      <p><b>10. Menjual barang yang belum dimiliki tanpa izin pemilik termasuk …</b></p>
-      <input type="radio" name="q10" value="0"> A. Akad sah<br>
-      <input type="radio" name="q10" value="1"> B. Akad batil<br>
-      <input type="radio" name="q10" value="0"> C. Akad sunnah<br>
-      <input type="radio" name="q10" value="0"> D. Akad wajib<br>
-    </div>
-
     <div style="text-align:center; margin-top:10px;">
       <button onclick="cek()">Kirim</button>
       <button onclick="ulang()">Ulang</button>
@@ -246,11 +197,11 @@ function cek(){
   let skor = 0;
 
   // reset warna
-  for(let i=1;i<=10;i++){
+  for(let i=1;i<=4;i++){
     document.getElementById("soal"+i).className="";
   }
 
-  for(let i=1;i<=10;i++){
+  for(let i=1;i<=4;i++){
     const soal = document.getElementById("soal"+i);
     const jawaban = document.querySelector('input[name="q'+i+'"]:checked')?.value;
     if(jawaban=="1"){
@@ -259,16 +210,19 @@ function cek(){
     } else {
       soal.classList.add("salah");
     }
-  document.getElementById("hasil").innerHTML="<b>Skor kamu: "+skor+"/10</b>";
+  }
+
+  document.getElementById("hasil").innerHTML="<b>Skor kamu: "+skor+"/4</b>";
 }
-<p class="rainbow"><b>Dibuat oleh: M. Reza Fahlevi</b></p>
-  
+
 function ulang(){
-  for(let i=1;i<=10;i++){
+  for(let i=1;i<=4;i++){
     document.getElementById("soal"+i).className="";
     document.querySelectorAll('input[name="q'+i+'"]').forEach(i=>i.checked=false);
   }
   document.getElementById("hasil").innerHTML="";
+}
+</script>
 }
 </script>
 function keKuis(){
