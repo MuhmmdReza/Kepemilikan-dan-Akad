@@ -30,6 +30,11 @@ background-attachment:fixed;
   background:rgba(0,0,0,0.5);
   z-index:-1;
   }
+  .screen video{
+  width:100%;
+  height:100%;
+  border-radius:10px;
+  }
 .love{
   position:fixed;
   font-size:24px;
@@ -127,7 +132,10 @@ button:hover{background:#0284c7}
         <span class="green"></span>
       </div>
       <div class="screen">
-        <iframe src="https://www.youtube.com/embed/IQjXVSz86xw"></iframe>
+        <video id="videoPembelajaran" controls>
+  <source src="video.mp4" type="video/mp4">
+  Browser kamu tidak mendukung video.
+        </video>
       </div>
     </div>
   </div>
@@ -181,6 +189,8 @@ const quizPage = document.getElementById("quizPage");
 const hasil = document.getElementById("hasil");
 
 function keKuis(){
+  const vid = document.getElementById("videoPembelajaran");
+  vid.pause(); // VIDEO BERHENTI
   videoPage.classList.remove("active");
   quizPage.classList.add("active");
 }
